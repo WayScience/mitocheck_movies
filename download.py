@@ -7,7 +7,7 @@ Date Created: 1/30/2023
 import pandas as pd
 import pathlib
 import os
-from downloader_class import AsperaDownloader
+from aspera_download import AsperaDownloader
 
 
 
@@ -18,8 +18,7 @@ screens_path = pathlib.Path("idr0013-screenA-plates.tsv")
 idr_id = "idr0013"
 num_wells = 384
 
-
-with open("idr0013-screenA-plates.tsv") as f:
+with open(screens_path) as f:
     plates = [row.split()[0] for row in f]
     # change to desired number of plates to download
     plate_subset = plates[:20]

@@ -1,11 +1,14 @@
 # mitocheck_movies
-All information regarding the download and processing of Mitocheck whole movies from IDR study with accession idr0013 (screenA). Movies are downloaded with Aspera. 
+All information regarding the download and processing of Mitocheck whole movies from IDR study with accession idr0013 (screenA) ([paper](https://pubmed.ncbi.nlm.nih.gov/20360735/idr), [data](https://idr.openmicroscopy.org/webclient/?show=screen-1101)). 
+Movies are downloaded with Aspera. 
 
 ## Aspera Downloader:
 
 ### Step 1: Install Aspera
 
-Install Aspera high-speed transfer client as described at https://github.com/IBM/aspera-cli#installation. We used the direct installation method. On Ubuntu, the direct installation method is as follows:
+Install Aspera high-speed transfer client as described [here](https://github.com/IBM/aspera-cli#installation). 
+We used the direct installation method. 
+On Ubuntu, the direct installation method is as follows:
 
 1. Install Ruby on Ubuntu: `sudo apt install ruby-full`
 2. Confirm Ruby install: `ruby --version`
@@ -16,7 +19,8 @@ Install Aspera high-speed transfer client as described at https://github.com/IBM
 
 ### Step 1a: Allow Aspera to run without password
 
-It is necessary to allow Aspera command line interface (ascp) to run without a password to use it more easily with python. In order to run ascp without a password do the following:
+It is necessary to allow Aspera command line interface (ascp) to run without a password to use it more easily with python. 
+In order to run ascp without a password do the following:
 
 
 1. Type `sudo visudo` at the terminal to open the sudo permissions (sudoers) file
@@ -26,4 +30,5 @@ Note: `username` is your username and `path_to_aspera` can be found with `ascli 
 4. Save and exit the editor
 
 ### Step 2: Download Aspera Public Key
-Download and Aspera public key. You will need the location of this key to use Aspera
+Download and Aspera public key. 
+You will need the location of this key to use Aspera

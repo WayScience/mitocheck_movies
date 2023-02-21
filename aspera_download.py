@@ -56,6 +56,7 @@ class AsperaDownloader:
         """
         __init__ function for AsperaDownloader class
 
+
         Parameters
         ----------
         aspera_path : pathlib.Path
@@ -98,7 +99,6 @@ class AsperaDownloader:
             .replace(".screen", "")
         )
         well = str(well_num).zfill(3)
-        # what is this?
         image_path = f"20150916-mitocheck-analysis/mitocheck/{screen_loc}/hdf5/00{well}_01.ch5"
 
         return image_path
@@ -108,6 +108,7 @@ class AsperaDownloader:
     ) -> pathlib.Path:
         """
         download image corresponding to plate and well number with Aspera
+
         Parameters
         ----------
         plate : str
@@ -116,6 +117,7 @@ class AsperaDownloader:
             number of well with desired image data
         save_dir : pathlib.Path
            path to dir to save IDR download in
+
         Returns
         -------
         pathlib.Path
@@ -127,5 +129,4 @@ class AsperaDownloader:
 
         # -l is flag for maximum download speed (500m is 500 mb/s)
         command = f"sudo {self.aspera_path} -TQ -l500m -P 33001 -i {self.aspera_key_path} {idr_location} movies/{save_dir}"
-        # print(command)
         os.system(command)
