@@ -1,5 +1,5 @@
 # mitocheck_movies
-All information regarding the download and processing of Mitocheck whole movies from IDR study with accession idr0013 (screenA) ([paper](https://pubmed.ncbi.nlm.nih.gov/20360735/idr), [data](https://idr.openmicroscopy.org/webclient/?show=screen-1101)). 
+All information regarding the download and processing of Mitocheck whole movies from IDR study with accession idr0013 (screenA) ([paper](https://pubmed.ncbi.nlm.nih.gov/20360735/idr), [data](https://idr.openmicroscopy.org/webclient/?show=screen-1101), [metadata](https://github.com/IDR/idr-metadata/blob/master/idr0013-neumann-mitocheck/screenA/)). 
 Movies are downloaded with Aspera. 
 
 ## Aspera Downloader:
@@ -19,7 +19,7 @@ On Ubuntu, the direct installation method is as follows:
 
 ### Step 1a: Allow Aspera to run without password
 
-It is necessary to allow Aspera command line interface (ascp) to run without a password to use it more easily with python. 
+It is necessary to allow Aspera command line interface (ascp) to run without your system password to use it more easily with python. 
 In order to run ascp without a password do the following:
 
 

@@ -104,8 +104,7 @@ class AsperaDownloader:
         return image_path
         
     def download_image(
-        self, plate: str, well_num: int, save_dir: pathlib.Path
-    ) -> pathlib.Path:
+        self, plate: str, well_num: int, save_dir: pathlib.Path):
         """
         download image corresponding to plate and well number with Aspera
 
