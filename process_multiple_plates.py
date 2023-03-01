@@ -18,6 +18,7 @@ from preprocessor import BasicpyPreprocessor
 fiji_path = pathlib.Path("/home/keenanmanpearl/Desktop/mitocheck/fiji-linux64/Fiji.app")
 movie_dir = pathlib.Path("/home/keenanmanpearl/Desktop/mitocheck_movies/movies/")
 fiji = BasicpyPreprocessor(fiji_path)
+# change to desired number of plates
 frames = 10
 
 for plate_dir in movie_dir.iterdir():
@@ -28,13 +29,14 @@ for plate_dir in movie_dir.iterdir():
             movie = fiji.load_mitocheck_movie_data(movie_path)
             corrected_movie = fiji.pybasic_illumination_correction(movie)
             frames = 10
+            down_factor = 20
             #frames = len(corrected_movie)
             # height = 1024
             height = len(corrected_movie[0])
             # width = 1344
             width = len(corrected_movie[0][0])
-            down_height = int(height/20)
-            down_width = int(width/20)
+            down_height = int(height/down_factor)
+            down_width = int(width/down_factor)
             down_points = (down_width, down_height)
 
             fourcc = cv2.VideoWriter_fourcc(*'jpeg')

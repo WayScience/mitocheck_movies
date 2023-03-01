@@ -1,6 +1,9 @@
 # mitocheck_movies
 All information regarding the download and processing of Mitocheck whole movies from IDR study with accession idr0013 (screenA) ([paper](https://pubmed.ncbi.nlm.nih.gov/20360735/idr), [data](https://idr.openmicroscopy.org/webclient/?show=screen-1101), [metadata](https://github.com/IDR/idr-metadata/blob/master/idr0013-neumann-mitocheck/screenA/)). 
-Movies are downloaded with Aspera. 
+Movies are downloaded with Aspera using `download.py`. 
+Note that the full dataset is > 20 TB so the number of plates to download should be specified by changing the `plate_subset` variable.
+Then illumination correction is performed with PyBaSiC and imageJ using either `process_single_movie.py` or `process_multiple_plates.py`. 
+The number of frames to include in the shortened video can be changed with the `frames` variable and the image compression can be controlled using the `down_factor` variable. 
 
 ## Aspera Downloader:
 
@@ -32,3 +35,18 @@ Note: `username` is your username and `path_to_aspera` can be found with `ascli 
 ### Step 2: Download Aspera Public Key
 Download and Aspera public key. 
 You will need the location of this key to use Aspera
+
+## Image Processing  
+
+### Step 1: Install Fiji
+
+Download the version of [Fiji](https://imagej.net/software/fiji/) (ImageJ) compatible with your system. 
+Fiji is used to open images.
+
+### Step 2: Install PyImageJ
+
+ [PyImageJ](https://github.com/imagej/pyimagej)is the python wrapper function for ImageJ.
+
+ ### Step 3: Install PyBaSic
+
+[PyBaSiC](https://github.com/peng-lab/BaSiCPy) is used to perform illumination correction. 
