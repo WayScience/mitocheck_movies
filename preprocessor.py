@@ -1,9 +1,5 @@
-
-
-# from importlib.resources import path
 import os
 import pathlib
-import pickle
 
 import imagej
 import skimage
@@ -12,6 +8,7 @@ from IPython.utils.io import capture_output
 
 import warnings
 import PyBaSiC.pybasic as pybasic
+
 
 class BasicpyPreprocessor:
     """
@@ -39,7 +36,7 @@ class BasicpyPreprocessor:
         Parameters
         ----------
         fiji_path : pathlib.Path
-            path to installed FIJI program, 
+            path to installed FIJI program,
             ex pathlib.Path("/home/user/Fiji.app")
         """
         original_path = os.getcwd()
@@ -65,6 +62,10 @@ class BasicpyPreprocessor:
         with capture_output():
             jmovie = self.ij.io().open(str(movie_load_path.resolve()))
             movie = self.ij.py.from_java(jmovie)
+            # dim 1 = frame
+            # dim 2 = height
+            # dim 3 = width
+            # dim 4 = channels, we do not need this
             movie_arr = movie.values[:, :, :, 0]
             return movie_arr
 

@@ -3,7 +3,7 @@ All information regarding the download and processing of Mitocheck whole movies 
 Movies are downloaded with Aspera using `download.py`. 
 Note that the full dataset is > 20 TB so the number of plates to download should be specified by changing the `plate_subset` variable.
 Then illumination correction is performed with PyBaSiC and imageJ using either `process_single_movie.py` or `process_multiple_plates.py`. 
-The number of frames to include in the shortened video can be changed with the `frames` variable and the image compression can be controlled using the `down_factor` variable. 
+You can change the number of frames to include in the shortened video using the `frames` variable and you can control the image compression using the `down_factor` variable.  
 
 ## Aspera Downloader:
 
@@ -45,8 +45,8 @@ Fiji is used to open images.
 
 ### Step 2: Install PyImageJ
 
- [PyImageJ](https://github.com/imagej/pyimagej)is the python wrapper function for ImageJ.
+ [PyImageJ](https://github.com/imagej/pyimagej) is the python wrapper function for ImageJ.
 
- ### Step 3: Install PyBaSic
+### Step 3: Install PyBaSic
 
 [PyBaSiC](https://github.com/peng-lab/BaSiCPy) is used to perform illumination correction. 

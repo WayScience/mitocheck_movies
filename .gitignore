@@ -1,6 +1,7 @@
-*pycache*
-.vscode*
+__pycache__/*
+.vscode/*
+ImageJ/*
 movies/*
-PyBaSic*
+PyBaSic/*
 asperaweb_id_dsa.openssh
 nohup.out
