@@ -19,7 +19,7 @@ from IPython.utils.io import capture_output
 import warnings
 import PyBaSiC.pybasic as pybasic
 
-from preprocessor import BasicpyPreprocessor
+from processor import BasicpyPreprocessor
 
 
 fiji_path = pathlib.Path("/home/keenanmanpearl/Desktop/mitocheck/fiji-linux64/Fiji.app")
@@ -34,8 +34,9 @@ save_path = (
 fiji = BasicpyPreprocessor(fiji_path)
 movie = fiji.load_mitocheck_movie_data(image_path)
 corrected_movie = fiji.pybasic_illumination_correction(movie)
-# only use first 10 frames
+# change number of frames to use
 frames = 10
+# change compression factor 
 down_factor = 20
 # height = 1024
 height = len(corrected_movie[0])

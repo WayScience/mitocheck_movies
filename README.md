@@ -3,7 +3,8 @@ All information regarding the download and processing of Mitocheck whole movies 
 Movies are downloaded with Aspera using `download.py`. 
 Note that the full dataset is > 20 TB so the number of plates to download should be specified by changing the `plate_subset` variable.
 Then illumination correction is performed with PyBaSiC and imageJ using either `process_single_movie.py` or `process_multiple_plates.py`. 
-You can change the number of frames to include in the shortened video using the `frames` variable and you can control the image compression using the `down_factor` variable.  
+You can change the number of frames to include in the shortened video using the `frames` variable and you can control the image compression using the `down_factor` variable. 
+Once processed, movies will appear with the same name and save path as the original movie but saved with the extension `.avi`. 
 
 ## Aspera Downloader:
 
