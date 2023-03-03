@@ -1,5 +1,6 @@
 # mitocheck_movies
 All information regarding the download and processing of Mitocheck whole movies from IDR study with accession idr0013 (screenA) ([paper](https://pubmed.ncbi.nlm.nih.gov/20360735/idr), [data](https://idr.openmicroscopy.org/webclient/?show=screen-1101), [metadata](https://github.com/IDR/idr-metadata/blob/master/idr0013-neumann-mitocheck/screenA/)). 
+Scripts used to download movies were modified from [mitocheck_data](https://github.com/WayScience/mitocheck_data) and scripts used for illumination correction were modified from the preprocessing step of [IDR_stream](https://github.com/WayScience/IDR_stream).
 Movies are downloaded with Aspera using `download.py`. 
 Note that the full dataset is > 20 TB so the number of plates to download should be specified by changing the `plate_subset` variable.
 Then illumination correction is performed with PyBaSiC and imageJ using either `process_single_movie.py` or `process_multiple_plates.py`. 

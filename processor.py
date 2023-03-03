@@ -124,16 +124,13 @@ class BasicpyPreprocessor:
 
             return corrected_movie
 
-def process_movies(fiji_path, movie_dir, frames, down_factor):
+def process_movies(fiji_path, movie_dir, frames = 10, down_factor = 20):
     fiji = BasicpyPreprocessor(fiji_path)
     for plate_dir in movie_dir.iterdir():
         for well_dir in plate_dir.iterdir():
             for movie_path in well_dir.iterdir():
                 movie = fiji.load_mitocheck_movie_data(movie_path)
                 corrected_movie = fiji.pybasic_illumination_correction(movie)
-                # change to control image compression
-                down_factor = 20
-                # frames = len(corrected_movie)
                 # height = 1024
                 height = len(corrected_movie[0])
                 # width = 1344
@@ -142,7 +139,6 @@ def process_movies(fiji_path, movie_dir, frames, down_factor):
                 down_height = int(height / down_factor)
                 down_width = int(width / down_factor)
                 down_points = (down_width, down_height)
-
                 # save corrected movie with the same name as original movie but updated extension
                 save_path = movie_path.with_suffix(".avi")
                 # compression type to write movie
