@@ -1,9 +1,10 @@
+__author__ = "Keenan Manpearl"
+__date__ = "2023/03/02"
 
 
-# from importlib.resources import path
+import cv2
 import os
 import pathlib
-import pickle
 
 import imagej
 import skimage
@@ -12,6 +13,7 @@ from IPython.utils.io import capture_output
 
 import warnings
 import PyBaSiC.pybasic as pybasic
+
 
 class BasicpyPreprocessor:
     """
@@ -39,7 +41,7 @@ class BasicpyPreprocessor:
         Parameters
         ----------
         fiji_path : pathlib.Path
-            path to installed FIJI program, 
+            path to installed FIJI program,
             ex pathlib.Path("/home/user/Fiji.app")
         """
         original_path = os.getcwd()
@@ -65,6 +67,10 @@ class BasicpyPreprocessor:
         with capture_output():
             jmovie = self.ij.io().open(str(movie_load_path.resolve()))
             movie = self.ij.py.from_java(jmovie)
+            # dim 1 = frame
+            # dim 2 = height
+            # dim 3 = width
+            # dim 4 = channels, we do not need this
             movie_arr = movie.values[:, :, :, 0]
             return movie_arr
 
@@ -117,3 +123,33 @@ class BasicpyPreprocessor:
             corrected_movie = brightfield_images_corrected.astype(np.uint8)
 
             return corrected_movie
+
+def process_movies(fiji_path, movie_dir, frames = 10, down_factor = 20):
+    fiji = BasicpyPreprocessor(fiji_path)
+    for plate_dir in movie_dir.iterdir():
+        for well_dir in plate_dir.iterdir():
+            for movie_path in well_dir.iterdir():
+                movie = fiji.load_mitocheck_movie_data(movie_path)
+                corrected_movie = fiji.pybasic_illumination_correction(movie)
+                # height = 1024
+                height = len(corrected_movie[0])
+                # width = 1344
+                width = len(corrected_movie[0][0])
+                # dimensions for compressed images
+                down_height = int(height / down_factor)
+                down_width = int(width / down_factor)
+                down_points = (down_width, down_height)
+                # save corrected movie with the same name as original movie but updated extension
+                save_path = movie_path.with_suffix(".avi")
+                # compression type to write movie
+                fourcc = cv2.VideoWriter_fourcc(*"jpeg")
+                # frames per second
+                fps = 4
+                # False for black and white
+                out = cv2.VideoWriter(f"{save_path}", fourcc, fps, down_points, False)
+                for frame in range(frames):
+                    corrected_image = corrected_movie[frame]
+                    # compress each frame
+                    resized_image = cv2.resize(corrected_image, down_points)
+                    out.write(resized_image)
+                out.release()

@@ -1,9 +1,11 @@
 # mitocheck_movies
 All information regarding the download and processing of Mitocheck whole movies from IDR study with accession idr0013 (screenA) ([paper](https://pubmed.ncbi.nlm.nih.gov/20360735/idr), [data](https://idr.openmicroscopy.org/webclient/?show=screen-1101), [metadata](https://github.com/IDR/idr-metadata/blob/master/idr0013-neumann-mitocheck/screenA/)). 
+Scripts used to download movies were modified from [mitocheck_data](https://github.com/WayScience/mitocheck_data) and scripts used for illumination correction were modified from the preprocessing step of [IDR_stream](https://github.com/WayScience/IDR_stream).
 Movies are downloaded with Aspera using `download.py`. 
 Note that the full dataset is > 20 TB so the number of plates to download should be specified by changing the `plate_subset` variable.
 Then illumination correction is performed with PyBaSiC and imageJ using either `process_single_movie.py` or `process_multiple_plates.py`. 
-The number of frames to include in the shortened video can be changed with the `frames` variable and the image compression can be controlled using the `down_factor` variable. 
+You can change the number of frames to include in the shortened video using the `frames` variable and you can control the image compression using the `down_factor` variable. 
+Once processed, movies will appear with the same name and save path as the original movie but saved with the extension `.avi`. 
 
 ## Aspera Downloader:
 
@@ -45,8 +47,8 @@ Fiji is used to open images.
 
 ### Step 2: Install PyImageJ
 
- [PyImageJ](https://github.com/imagej/pyimagej)is the python wrapper function for ImageJ.
+ [PyImageJ](https://github.com/imagej/pyimagej) is the python wrapper function for ImageJ.
 
- ### Step 3: Install PyBaSic
+### Step 3: Install PyBaSic
 
 [PyBaSiC](https://github.com/peng-lab/BaSiCPy) is used to perform illumination correction. 

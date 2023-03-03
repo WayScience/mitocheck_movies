@@ -1,7 +1,6 @@
-'''
-Author: Keenan Manpearl
-Date Created: 1/30/2023
-'''
+__author__ = "Keenan Manpearl"
+__date__ = "2023/01/30"
+
 
 
 import pandas as pd
