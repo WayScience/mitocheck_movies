@@ -131,7 +131,6 @@ def process_movies(fiji_path, movie_dir, frames = 10, down_factor = 20):
             for movie_path in well_dir.iterdir():
                 movie = fiji.load_mitocheck_movie_data(movie_path)
                 corrected_movie = fiji.pybasic_illumination_correction(movie)
-                corrected_array = []
                 # height = 1024
                 height = len(corrected_movie[0])
                 # width = 1344
@@ -152,6 +151,5 @@ def process_movies(fiji_path, movie_dir, frames = 10, down_factor = 20):
                     corrected_image = corrected_movie[frame]
                     # compress each frame
                     resized_image = cv2.resize(corrected_image, down_points)
-                    corrected_array.append(resized_image)
                     out.write(resized_image)
                 out.release()
